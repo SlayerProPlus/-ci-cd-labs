@@ -41,5 +41,10 @@ jobs:
           echo "Versión de Git:"
           git --version
 
+      - name: Verificación de calidad
+        run: |
+          echo "Ejecutando verificación..."
+          exit 1
+
       - name: Finalizar pipeline
         run: echo "Pipeline ejecutado correctamente."
