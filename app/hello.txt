@@ -1,0 +1,4 @@
+¡Hola desde el primer pipeline de CI/CD!
+
+Este archivo forma parte del Laboratorio 1 del módulo de Integración Continua.
+El pipeline se ejecuta automáticamente cada vez que se realiza un push al repositorio.

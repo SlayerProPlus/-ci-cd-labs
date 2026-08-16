@@ -1,0 +1,40 @@
+name: Primer Pipeline CI
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  hello-ci:
+    name: Hello CI
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Mostrar mensaje de bienvenida
+        run: |
+          echo "================================"
+          echo "      PRIMER PIPELINE CI"
+          echo "================================"
+          echo "Bienvenido al primer pipeline de Integración Continua"
+          echo "Repositorio: ${{ github.repository }}"
+          echo "Rama       : ${{ github.ref_name }}"
+          echo "Commit     : ${{ github.sha }}"
+          echo "Actor      : ${{ github.actor }}"
+          echo "================================"
+
+      - name: Mostrar fecha y hora de ejecución
+        run: |
+          echo "Fecha y hora de ejecución:"
+          date
+
+      - name: Mostrar versión de Git instalada
+        run: |
+          echo "Versión de Git:"
+          git --version
+
+      - name: Finalizar pipeline
+        run: echo "✅ Pipeline ejecutado correctamente."
