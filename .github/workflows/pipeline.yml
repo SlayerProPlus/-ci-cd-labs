@@ -37,4 +37,4 @@ jobs:
           git --version
 
       - name: Finalizar pipeline
-        run: echo "✅ Pipeline ejecutado correctamente."
+        run: echo "Pipeline ejecutado correctamente."
