@@ -23,28 +23,41 @@ jobs:
           echo "================================"
           echo "      PRIMER PIPELINE CI"
           echo "================================"
-          echo "Bienvenido al primer pipeline de Integración Continua"
           echo "Repositorio: ${{ github.repository }}"
           echo "Rama       : ${{ github.ref_name }}"
           echo "Commit     : ${{ github.sha }}"
-          echo "Actor      : ${{ github.actor }}"
           echo "Evento     : ${{ github.event_name }}"
           echo "================================"
 
       - name: Mostrar fecha y hora de ejecución
-        run: |
-          echo "Fecha y hora de ejecución:"
-          date
+        run: date
 
       - name: Mostrar versión de Git instalada
-        run: |
-          echo "Versión de Git:"
-          git --version
+        run: git --version
 
-      - name: Verificación de calidad
-        run: |
-          echo "Ejecutando verificación..."
-          echo "Verificación completada sin errores."
+  pruebas:
+    name: Pruebas Unitarias
+    runs-on: ubuntu-latest
+    needs: hello-ci
 
-      - name: Finalizar pipeline
-        run: echo "Pipeline ejecutado correctamente."
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Configurar Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.14'
+
+      - name: Instalar dependencias
+        run: pip install -r requirements.txt
+
+      - name: Ejecutar pruebas unitarias
+        run: pytest tests/ -v --html=reporte-pruebas.html --self-contained-html
+
+      - name: Publicar reporte de pruebas
+        uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: reporte-pruebas
+          path: reporte-pruebas.html
