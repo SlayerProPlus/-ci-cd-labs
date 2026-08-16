@@ -6,7 +6,7 @@ from app.calculator import sumar, restar, multiplicar, dividir
 import pytest
 
 def test_sumar():
-    assert sumar(3, 2) == 99
+    assert sumar(3, 2) == 5
 
 def test_restar():
     assert restar(10, 4) == 6
