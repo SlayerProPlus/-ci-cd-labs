@@ -34,3 +34,21 @@ GitHub Actions
 ## Estado del pipeline
 
 ![CI](https://github.com/TU_USUARIO/ci-cd-labs/actions/workflows/pipeline.yml/badge.svg)
+ 
+## Laboratorio 2
+
+### Branching y Pull Requests
+
+En este laboratorio se implementó una estrategia de branching basada en ramas de funcionalidad.
+
+#### Reglas del flujo de trabajo
+
+- La rama `main` representa la versión estable del proyecto.
+- Todo cambio se desarrolla en una rama `feature/` independiente.
+- Los cambios se integran únicamente mediante Pull Request.
+- El pipeline de CI valida cada cambio antes del merge.
+
+#### Flujo implementado
+
+```text
+Developer → Feature Branch → Commit → Push → CI Pipeline → Pull Request → Review → Merge → main
