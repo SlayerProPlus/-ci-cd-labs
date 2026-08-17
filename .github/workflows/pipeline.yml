@@ -53,7 +53,7 @@ jobs:
         run: pip install -r requirements.txt
 
       - name: Ejecutar pruebas unitarias
-        run: pytest tests/ -v --html=reporte-pruebas.html --self-contained-html
+        run: pytest tests/ -v --html=reporte-pruebas.html --self-contained-html --cov=app --cov-report=html:reporte-cobertura --cov-report=term
 
       - name: Publicar reporte de pruebas
         uses: actions/upload-artifact@v4
@@ -61,3 +61,10 @@ jobs:
         with:
           name: reporte-pruebas
           path: reporte-pruebas.html
+
+      - name: Publicar reporte de cobertura
+        uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: reporte-cobertura
+          path: reporte-cobertura/
