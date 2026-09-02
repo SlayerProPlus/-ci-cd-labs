@@ -151,8 +151,8 @@ El artifact es inmutable: el mismo `.zip` que se prueba es el que se despliega.
 Se implementa **Blue-Green Deployment** para garantizar cero tiempo de inactividad durante los despliegues.
 
 **Infraestructura:**
-- **VM 1** (`192.168.1.170`): Servidor con Nginx como balanceador de carga.
-- **VM 2** (`192.168.1.171`): Servidor de aplicación con dos instancias Flask.
+- **VM 1** (`192.168.56.10`): Servidor con Nginx como balanceador de carga.
+- **VM 2** (`192.168.56.11`): Servidor de aplicación con dos instancias Flask.
 
 **Flujo de despliegue:**
 
@@ -185,7 +185,7 @@ bash scripts/deploy-blue-green.sh /ruta/al/release-python.zip
 bash scripts/health-check.sh 8080
 
 # Probar el balanceo de tráfico
-bash scripts/traffic-test.sh http://192.168.1.170/api/instance 20
+bash scripts/traffic-test.sh http://192.168.56.10/api/instance 20
 ```
 
 ---
